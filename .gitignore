@@ -7,4 +7,6 @@ bin/*
 include
 include/*
 .Python
+local
+local/*
 pip-selfcheck.json

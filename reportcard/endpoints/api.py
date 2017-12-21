@@ -3,29 +3,28 @@
 import os
 from flask import Flask, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
-import user
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'abcdefgh'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
-app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
-db = SQLAlchemy(app)
+reportcard_app = Flask(__name__)
+reportcard_app.config['SECRET_KEY'] = 'abcdefgh'
+reportcard_app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+reportcard_app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+db = SQLAlchemy(reportcard_app)
 
 vector_grades = {'nombre': 'Ricardo', 'course': 'Web Services', 'grade': 100}
 
 
-@app.route('/')
+@reportcard_app.route('/')
 def hello_world():
     return 'Hello from Flask! Im RicDev'
 
 
-@app.route('/grades')
+@reportcard_app.route('/grades')
 def get_grades():
     global vector_grades
     return "<h1>Nombre: %s</h1>" % vector_grades['nombre']
 
-g
-@app.route('/register', methods=['POST'])
+
+@reportcard_app.route('/register', methods=['POST'])
 def new_user():
     username = request.json.get('username')
     password = request.json.get('password')
@@ -43,4 +42,4 @@ def new_user():
 if __name__ == '__main__':
     if not os.path.exists('db.sqlite'):
         user.db.create_all()
-    app.run(host="0.0.0.0", port=5000)
+    reportcard_app.run(host="0.0.0.0", port=5000)
