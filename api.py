@@ -8,6 +8,8 @@ app = Flask(__name__)
 
 vector_grades = {'nombre': 'Ricardo', 'course': 'Web Services', 'grade': 100}
 
+def example():
+    return 10
 
 @app.route('/')
 def hello_world():
