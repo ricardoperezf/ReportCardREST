@@ -1,12 +1,12 @@
-from flask import Flask
-from passlib.apps import custom_app_context as pwd_context
-from flask_sqlalchemy import SQLAlchemy
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+import os
+import sys
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'abcdefgh'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
-app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
-db = SQLAlchemy(app)
+sys.path.append("/home/ricardo/ws/ReportCard/ReportCard/reportcard")
+from flask_sqlalchemy import SQLAlchemy
+from passlib.apps import custom_app_context as pwd_context
+from reportcard import db
 
 
 class User(db.Model):
