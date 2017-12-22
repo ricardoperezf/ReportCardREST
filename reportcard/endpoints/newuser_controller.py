@@ -11,7 +11,7 @@ def register_new_user():
         abort(400)  # MISSING USERNAME OR PASSWORD.
     if User.query.filter_by(username=username).first() is not None:
         abort(400)  # ALREADY EXISTING USER.
-    user = User(username=username)
+    user = User(username)
     user.hash(password)
     db.session.add(user)
     db.session.commit()

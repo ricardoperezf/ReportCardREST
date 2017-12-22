@@ -11,5 +11,8 @@ class User(db.Model):
     username = db.Column(db.String(32), index=True)
     password_hashed = db.Column(db.String(64))
 
+    def __init__(self, username):
+        self.username = username
+        
     def hash(self, password):  # ENCRYPTAR LA CONTRASEÑA.
         self.password_hashed = pwd_context.encrypt(password)
