@@ -1,9 +1,6 @@
 import datetime
 from flask import request, abort, jsonify
 from reportcard import reportcard_app, db
-from sqlalchemy import create_engine
-from sqlalchemy.log import echo_property
-from sqlalchemy.orm import sessionmaker
 
 from ..models.grades import Grade
 
