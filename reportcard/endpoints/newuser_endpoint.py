@@ -7,7 +7,6 @@ from ..models.user import User
 def register_new_user():
     username = request.json.get('username')
     password = request.json.get('password')
-    print("\n" + str(username) + " " + str(password) + "\n")
     if username is None or password is None:
         abort(400)  # MISSING USERNAME OR PASSWORD.
     if User.query.filter_by(username=username).first() is not None:
