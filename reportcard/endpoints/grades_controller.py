@@ -15,6 +15,7 @@ def post_grades():
     if course is None or grade is None:
         abort(400)  # Missing course or grade
     new_grade = Grade(course, grade, str(date))
+    db.create_all()
     db.session.add(new_grade)
     db.session.commit()
     return jsonify({'course': new_grade.course, 'grade': new_grade.grade, 'date': new_grade.date}), 201
