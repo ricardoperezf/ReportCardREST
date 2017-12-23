@@ -21,6 +21,7 @@ def post_grades():
     return jsonify({'course': new_grade.course, 'grade': new_grade.grade, 'date': new_grade.date}), 201
 
 
+
 @reportcard_app.route('/grades', methods=['GET'])
 def get_grades():
     global vector
